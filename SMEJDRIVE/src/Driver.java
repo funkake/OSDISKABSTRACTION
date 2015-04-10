@@ -46,6 +46,13 @@ public class Driver {
         return true;
     }
     public File load(String name){
+        Integer pos = getNextOpenSector();
+        if (pos == null) return null;
+
+        return hd.read(pos,pos).get(0);
+    }
+
+    private Integer getNextOpenSector() {
         File meta = load(0);
         if(meta==null){
             System.err.print("NO FILES SAVED");
@@ -66,8 +73,7 @@ public class Driver {
 
         String[] str = lines.get(lines.size()).split("$");
         Integer pos = Integer.parseInt(str[1]);
-
-        return hd.read(pos,pos).get(0);
+        return pos;
     }
 
     public File load(int sector){
