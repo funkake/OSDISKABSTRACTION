@@ -1,3 +1,5 @@
+import jdk.jfr.events.ExceptionThrownEvent;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -6,79 +8,67 @@ import java.io.FileWriter;
  * Created by Terje on 10.04.2015.
  */
 public class OS {
-    File file = null;
+    //File file = null;
+    //Driver mrDriver = new Driver();
     public static void main(String[] args) {
+
         OS mr = new OS();
 
-        mr.chooseFile();
+        File file = mr.chooseFile();
+        String justName = file.getName();
+        //mr.saveFile(file);
+        System.out.println(file.getName());
 
-        //FileWriter writer = new FileWriter();
 
         //save
         //load
 
 
-
-
-        /*
-
-
-        frame.add(jfc);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.setSize(600,600);
-        frame.setVisible(true);
-
-        jfc.addActionListener(new ActionListener() {
-            @Override
-
-            public void actionPerformed(ActionEvent e) {
-
-                if(e.getActionCommand().equals("ApproveSelection")){
-                    files.add(jfc.getSelectedFile());
-                    System.out.println(jfc.getSelectedFile());
-                    jfc.accept(jfc.getSelectedFile());
-                }else if(e.getActionCommand().equals("ApproveSelection")){
-                    files.add(jfc.getSelectedFile());
-                    System.out.println(jfc.getSelectedFile());
-                    jfc.accept(jfc.getSelectedFile());
-                }
-            }
-        });
-        */
-
     }
 
     public File chooseFile(){
+        File chosenFile = null;
         final JFileChooser jfc = new JFileChooser();
         //final ArrayList<File> files = new ArrayList<File>();
         JFrame frame = new JFrame();
         int returnVal = jfc.showOpenDialog(frame);
         if(returnVal == JFileChooser.APPROVE_OPTION){
-            file = jfc.getSelectedFile();
+            chosenFile = jfc.getSelectedFile();
         }
-        if(file != null) {
-            System.out.println("You choose: " + file);
+        if(chosenFile != null) {
+            System.out.println("You choose: " + chosenFile);
         }else{
-            System.out.println("No File Chosen");
+            System.out.println("No file chosen");
         }
-        return file;
+        return chosenFile;
     }
 
-    /*
 
-    public boolean saveFile(int pos){
-        if(mrDriver.save(file,pos)){
-            return true;
+    /*
+    public boolean saveFile(File file){
+        if(file != null) {
+            if (mrDriver.save(file)) {
+                System.out.println("File was saved");
+                return true;
+            }
+            System.out.println("Driver was unable to save");
+            return false;
         }
+        System.out.println("No file to save");
         return false;
 
     }
-    */
-    /*
-    public File loadFile(){
-        if()
+
+
+    public File loadFile(String filename){
+        File loadFile = mrDriver.load(filename);
+        if(loadFile != null){
+            return loadFile;
+        }
+        return null;
     }
     */
+
 
 
 
