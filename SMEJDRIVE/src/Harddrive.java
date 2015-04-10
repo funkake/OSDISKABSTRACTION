@@ -40,6 +40,7 @@ public class Harddrive {
 
     public void write(File file, int place){
         hd.add(place,file);
+        //hehe
     }
     /*
     public void write(String filepath){
