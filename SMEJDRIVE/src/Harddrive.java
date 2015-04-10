@@ -38,8 +38,8 @@ public class Harddrive {
 
     }
 
-    public void write(File file){
-        hd.add(file);
+    public void write(File file, int place){
+        hd.add(place,file);
     }
     /*
     public void write(String filepath){
