@@ -9,7 +9,7 @@ import java.io.FileWriter;
  */
 public class OS {
     //File file = null;
-    //Driver mrDriver = new Driver();
+    Driver mrDriver = new Driver(new Harddrive(100));
     public static void main(String[] args) {
 
         OS mr = new OS();
@@ -18,10 +18,9 @@ public class OS {
         String justName = file.getName();
         //mr.saveFile(file);
         System.out.println(file.getName());
-
-
-        //save
-        //load
+        mr.saveFile(file);
+        System.out.println("-----");
+        mr.loadFile(justName);
 
 
     }
@@ -44,7 +43,7 @@ public class OS {
     }
 
 
-    /*
+
     public boolean saveFile(File file){
         if(file != null) {
             if (mrDriver.save(file)) {
@@ -67,7 +66,7 @@ public class OS {
         }
         return null;
     }
-    */
+
 
 
 
