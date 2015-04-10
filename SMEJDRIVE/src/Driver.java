@@ -14,7 +14,7 @@ public class Driver {
     public File load(){
         hd.
     }
-    public delete(File fil){
+    public delete(File file){
 
     }
 }
